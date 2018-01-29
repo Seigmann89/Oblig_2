@@ -1,10 +1,11 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
 
-        Serie galactica = new Serie("Battlestar Galactica", "When an old enemy, the Cylons, resurface and obliterate the 12 colonies," + "\n" + "the crew of the aged Galactica protect a small civilian fleet - the last of humanity..", LocalDate.of(2005, 1, 14));
+        Serie galactica = new Serie("Battlestar Galactica", "When an old enemy, the Cylons, resurface and obliterate " +
+                "the 12 colonies," + "\n" + "the crew of the aged Galactica protect a small civilian fleet - the last" +
+                " of humanity..", LocalDate.of(2005, 1, 14));
 
 
         //Episode thirtythree = new Episode(1, 1, "33", 42);
@@ -33,7 +34,10 @@ public class Main {
         System.out.println("\n" + "-----------------------" + "\n");
 
         //Antall episoder
-        galactica.antallEpisoder();
+        System.out.println(galactica.antallEpisoder());
+
+        //galactica.lagTittel();
+        //System.out.println(galactica.lagTittel());
 
     }
 }
