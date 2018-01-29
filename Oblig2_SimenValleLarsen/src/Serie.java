@@ -1,15 +1,15 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Serie {
     private String tittelSerie;
     private String beskrivelse;
     private LocalDate utgivelse;
-    private ArrayList<Episode> sesongListe = new ArrayList<Episode>();
+    private ArrayList<Episode> sesongListe;
     private int gjennomSnittligSpilletid;
     private int antallSesonger;
     private int antallEpisoder;
-
 
     public Serie() {
         this.tittelSerie = "Tittel";
@@ -18,13 +18,13 @@ public class Serie {
         this.sesongListe = new ArrayList<Episode>();
     }
 
+
     public Serie(String tittelSerie, String beskrivelse, LocalDate utgivelse) {
         this.tittelSerie = tittelSerie;
         this.beskrivelse = beskrivelse;
         this.utgivelse = utgivelse;
         this.sesongListe = new ArrayList<Episode>();
     }
-
 
     public void leggTilEpisode(Episode nyEpisode) {
         if ((nyEpisode.getSesongNummer()) > (this.antallSesonger + 1)) {
@@ -58,6 +58,8 @@ public class Serie {
         }
     }
 
+
+
     public int henteTotalTid() {
         int totalTid = 0;
 
@@ -71,47 +73,16 @@ public class Serie {
         gjennomSnittligSpilletid = this.henteTotalTid() / this.sesongListe.size();
     }
 
-    public void antallEpisoder() {
+    public String antallEpisoder() {
         int antEpisoder = 0;
 
         for (int i = 0; i < sesongListe.size(); i++) {
-            antEpisoder += sesongListe.get(i).getEpisodeNummer();
-
+            antEpisoder++;
         }
-        System.out.println("Det er tilsammen: " + antEpisoder + " episoder");
+        return "Det finnes tilsammen: " + antEpisoder + " episoder";
     }
 
-    //Getter
-
-    public String getTittelSerie() {
-        return tittelSerie;
-    }
-
-    public String getBeskrivelse() {
-        return beskrivelse;
-    }
-
-    public LocalDate getUtgivelse() {
-        return utgivelse;
-    }
-
-    public ArrayList<Episode> getSesongListe() {
-        return sesongListe;
-    }
-
-    private int getGjennomSnittligSpilletid() {
-        return gjennomSnittligSpilletid;
-    }
-
-    public int getAntallSesonger() {
-        return antallSesonger;
-    }
-
-    public int getAntallEpisoder() {
-        return antallEpisoder;
-    }
     //Setter
-
 
     public void setTittelSerie(String tittelSerie) {
         this.tittelSerie = tittelSerie;
@@ -127,6 +98,36 @@ public class Serie {
 
     public void setSesongListe(ArrayList<Episode> sesongListe) {
         this.sesongListe = sesongListe;
+    }
+
+    //Getter
+
+    public ArrayList<Episode> getSesongListe() {
+        return sesongListe;
+    }
+
+    public LocalDate getUtgivelse() {
+        return utgivelse;
+    }
+
+    public String getBeskrivelse() {
+        return beskrivelse;
+    }
+
+    public String getTittelSerie() {
+        return tittelSerie;
+    }
+
+    private int getGjennomSnittligSpilletid() {
+        return gjennomSnittligSpilletid;
+    }
+
+    public int getAntallSesonger() {
+        return antallSesonger;
+    }
+
+    public int getAntallEpisoder() {
+        return antallEpisoder;
     }
 
     @Override
